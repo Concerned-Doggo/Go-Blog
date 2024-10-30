@@ -26,8 +26,8 @@ func createBlog(blog model.Blog) (bson.ObjectID){
 func getRecentBlogs(limit int) []model.Blog {
 	var blogs []model.Blog
 
-	cursor, err := collection.Find(context.Background(), bson.D{})
-	checkNilErr(err, "unable to find blogs")
+	cursor, err := collection.Find(context.Background(), bson.D{{}})
+	checkNilErr(err, "unable to find blogs   ")
 	defer cursor.Close(context.Background())
 
 	for cursor.Next(context.Background()) {

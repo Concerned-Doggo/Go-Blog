@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/Concerned-Doggo/Go-React-Blog/model"
@@ -13,6 +12,7 @@ func GetRecentBlogs(w http.ResponseWriter, r *http.Request) {
     blogs := getRecentBlogs(10)
 
     w.Header().Set("content-Type", "application/json")
+    w.Header().Set("Access-Control-Allow-Methods", "GET")
     json.NewEncoder(w).Encode(blogs)
 }
 
@@ -23,6 +23,7 @@ func GetBlogById(w http.ResponseWriter, r *http.Request){
     blog := getBlogById(blogId)
 
     w.Header().Set("Content-Type", "application/json")
+    // w.Header().Set("Access-Control-Allow-Methods", "GET")
     json.NewEncoder(w).Encode(blog)
 }
 
